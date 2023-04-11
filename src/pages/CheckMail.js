@@ -13,7 +13,10 @@ function ConfirmarCuenta() {
         setMensaje("Cuenta confirmada exitosamente.");
       })
       .catch((error) => {
-        setMensaje("Ocurrió un error al confirmar la cuenta.");
+        setMensaje(
+          "Ocurrio un error al confirmar la cuenta " +
+            error.response.data.message
+        );
       });
   }, [idUser]);
 

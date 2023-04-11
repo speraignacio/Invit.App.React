@@ -15,10 +15,13 @@ import validator from "validator";
 import { isObjEmpty } from "../helpers/helpers";
 import { registerUser, loginUser } from "../actions/authActions";
 import { useHistory } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import "../styles/styles.css";
 
 export default function SignIn() {
   const [errors, setErrors] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const history = useHistory();
@@ -30,6 +33,7 @@ export default function SignIn() {
   }, [loggedIn, history]);
 
   const register = ({ email, password, firstName, lastName }) => {
+    setShowSpinner(true);
     const errors = {};
     setErrors(errors);
 
@@ -51,6 +55,7 @@ export default function SignIn() {
 
     if (!isObjEmpty(errors)) {
       setErrors(errors);
+      setShowSpinner(false);
       return;
     }
 
@@ -58,9 +63,11 @@ export default function SignIn() {
       .then((response) => {
         setShowModal(true);
         dispatch(loginUser({ email, password }));
+        setShowSpinner(false);
       })
       .catch((err) => {
         setErrors({ registerError: err.response.data.message });
+        setShowSpinner(false);
       });
   };
 
@@ -72,7 +79,6 @@ export default function SignIn() {
             {errors.registerError && (
               <Alert variant="danger">{errors.registerError}</Alert>
             )}
-
             <h3>Crear cuenta</h3>
             <hr></hr>
             <SignUpForm
@@ -111,6 +117,12 @@ export default function SignIn() {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {showSpinner && (
+        <div className="spinner-overlay spinner-container">
+          <Spinner animation="border" />
+        </div>
+      )}
     </Container>
   );
 }
