@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import authReducer from './authReducer';
-import userPostReducer from "./userPostReducer";
+import authReducer from "./authReducer";
+import userEventReducer from "./userEventReducer";
 
 export default combineReducers({
-    auth: authReducer,
-    posts: userPostReducer
+  auth: authReducer,
+  events: userEventReducer,
 });

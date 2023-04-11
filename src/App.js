@@ -2,18 +2,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./layouts/Navigation";
-import Posts from "./pages/Posts";
+import Events from "./pages/Events";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import PostDetails from "./pages/PostDetails";
-import NewPost from "./pages/NewPost";
-import EditPost from "./pages/EditPost";
+import EventDetails from "./pages/EventDetails";
+import NewEvent from "./pages/NewEvent";
+import EditEvent from "./pages/EditEvent";
 import ConfirmarCuenta from "./pages/CheckMail";
 import store from "./store";
 import { Provider } from "react-redux";
 import checkForToken from "./helpers/checkForToken";
 import PrivateRoute from "./utils/PrivateRoute";
-import UserPosts from "./pages/UserPosts";
+import UserEvents from "./pages/UserEvents";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -35,10 +35,10 @@ function App() {
         <Container>
           <ToastContainer />
           <Switch>
-            <Route exact path="/" component={Posts}></Route>
+            <Route exact path="/" component={Events}></Route>
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
-            <Route exact path="/post/:id" component={PostDetails}></Route>
+            <Route exact path="/event/:id" component={EventDetails}></Route>
             <Route
               exact
               path="/confirmarCuenta/:idUser"
@@ -46,18 +46,18 @@ function App() {
             ></Route>
             <PrivateRoute
               exact
-              path="/posts"
-              component={UserPosts}
+              path="/events"
+              component={UserEvents}
             ></PrivateRoute>
             <PrivateRoute
               exact
-              path="/newpost"
-              component={NewPost}
+              path="/newevent"
+              component={NewEvent}
             ></PrivateRoute>
             <PrivateRoute
               exact
-              path="/editpost/:id"
-              component={EditPost}
+              path="/editevent/:id"
+              component={EditEvent}
             ></PrivateRoute>
           </Switch>
         </Container>

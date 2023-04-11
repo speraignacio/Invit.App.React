@@ -2,10 +2,10 @@
 const API_URL = "http://localhost:8080";
 export const LOGIN_ENDPOINT = API_URL + "/users/login";
 export const REGISTER_ENDPOINT = API_URL + "/users";
-export const PUBLIC_POSTS_ENDPOINT = API_URL + "/posts/last";
-export const POST_DETAILS_ENDPOINT = API_URL + "/posts";
-export const USER_POSTS_ENDPOINT = API_URL + "/users/posts";
-export const CREATE_POST_ENDPOINT = API_URL + "/posts";
-export const DELETE_POST_ENDPOINT = API_URL + "/posts";
-export const UPDATE_POST_ENDPOINT = API_URL + "/posts";
+export const PUBLIC_EVENTS_ENDPOINT = API_URL + "/events/last";
+export const EVENT_DETAILS_ENDPOINT = API_URL + "/events";
+export const USER_EVENTS_ENDPOINT = API_URL + "/users/events";
+export const CREATE_EVENT_ENDPOINT = API_URL + "/events";
+export const DELETE_EVENT_ENDPOINT = API_URL + "/events";
+export const UPDATE_EVENT_ENDPOINT = API_URL + "/events";
 export const CHECKMAIL_ENDPOINT = API_URL + "/users/checkEmail";
